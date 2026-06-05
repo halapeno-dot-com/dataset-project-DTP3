@@ -1,0 +1,23 @@
+-- database: ./astronautdatabase.db
+
+--all astronauts
+SELECT * FROM astronauts;
+
+--astronaut and mission names only
+SELECT missions.mission_name, astronauts.name FROM astronauts
+JOIN missions ON missions.missionID=astronauts.astronautID;
+
+--longest astronaut mission
+SELECT astronauts.name, astronauts.mission_count FROM astronauts
+ORDER BY astronauts.mission_count DESC; 
+
+--astronauts on the same mission
+SELECT astronauts.name FROM astronauts
+JOIN missions ON missions.missionID=astronauts.astronautID
+WHERE missions.mission_name = 'Apollo 11';
+
+--mission with the most astronauts
+SELECT missions.mission_name, COUNT(astronauts.astronautID) AS astronaut_count FROM missions
+JOIN astronauts ON astronauts.astronautID = missions.missionID
+GROUP BY missions.mission_name
+ORDER BY astronaut_count DESC;
