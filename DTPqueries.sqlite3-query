@@ -21,3 +21,8 @@ SELECT missions.mission_name, COUNT(astronauts.astronautID) AS astronaut_count F
 JOIN astronauts ON astronauts.astronautID = missions.missionID
 GROUP BY missions.mission_name
 ORDER BY astronaut_count DESC;
+
+--astronaut with the most missions
+SELECT name, mission_count
+FROM astronauts
+ORDER BY mission_count DESC;
