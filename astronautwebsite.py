@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, render_template
 import sqlite3
 
 DATABASE = "astronautdatabase.db"
@@ -33,7 +33,7 @@ def home():
             JOIN missions ON missions.missionID=astronauts.astronautID
             JOIN selections ON selections.selectionID=astronauts.astronautID;"""
     results = query_db(sql)
-    return str(results)
+    return render_template("layout.html")
 
 @app.route("/astronauts/<int:id>")
 def astronaut(id):
