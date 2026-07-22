@@ -1,3 +1,19 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: Zen Dots, sans-serif;}
 
-/*fix css structure of columns*/
+body{
+    background-color: #f4f4f4;
+    font-family: Zen Dots, sans-serif;
+}
+
+main{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.main-content{
+    background-color: pink;
+}
+
