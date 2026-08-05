@@ -3,28 +3,48 @@ body,h1,h2,h3,h4,h5,h6 {font-family: Zen Dots, sans-serif;}
 body{
     background-color: #f4f4f4;
     font-family: Zen Dots, sans-serif;
-}
-
-main{
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    align-content: center;
+    display: flex;
     justify-content: center;
-    padding: 3%;
-    gap: 5%;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.inner-main{
-    background-color: pink;
-    justify-content:center;
-    align-content: center;
+.main-content{
+  width: 80%;
+  height: 90vh;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 135px 1fr 1fr;
+  grid-template-areas:
+      "search header image1"
+      "search article image1"
+      "image2 article image3";
 }
 
-aside{
-    justify-items: center;
-    text-align: center;
+.main-content div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: pink;
 }
 
-
+#search{
+  grid-area: search;
+}
+#header{
+  grid-area: header;
+}
+#image1{
+  grid-area: image1;
+}
+#image2{
+  grid-area: image2;
+}
+#article{
+  grid-area: article;
+}
+#image3{
+  grid-area: image3;
+}

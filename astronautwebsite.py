@@ -26,14 +26,14 @@ def query_db(query, args=(), one=False):
 
 @app.route('/')
 def home():
-    #home page - astronaut name, ID, and image URL
+    #home page - astronaut name, ID
     sql = """
-            SELECT astronauts.astronautID, astronauts.name, astronauts.imageURL, 
-            missions.missionID, missions.mission_name, missions.imageURL FROM astronauts 
+            SELECT astronauts.astronautID, astronauts.name,
+            missions.missionID, missions.mission_name FROM astronauts 
             JOIN missions ON missions.missionID=astronauts.astronautID
             JOIN selections ON selections.selectionID=astronauts.astronautID;"""
     results = query_db(sql)
-    return render_template("layout.html")
+    return render_template("Home.html")
 
 @app.route("/astronauts/<int:id>")
 def astronaut(id):
