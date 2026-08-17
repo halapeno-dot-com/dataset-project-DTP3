@@ -33,7 +33,7 @@ def home():
             JOIN missions ON missions.missionID=astronauts.astronautID
             JOIN selections ON selections.selectionID=astronauts.astronautID;"""
     results = query_db(sql)
-    return render_template("Home.html")
+    return render_template("Home.html", astronauts=results)
 
 @app.route("/astronauts/<int:id>")
 def astronaut(id):
@@ -44,18 +44,11 @@ def astronaut(id):
              JOIN selections ON selections.selectionID=astronauts.astronautID
              WHERE astronauts.astronautID = ?;"""
     result = query_db(sql,(id,),True)
-    return str(result)
+    return render_template("Astronauts.html", astronaut=result)
 
-@app.route("/missions/<int:id>")
-def mission(id):
-    #one mission based on the ID
-    sql = """
-             SELECT * FROM missions 
-             JOIN astronauts ON astronauts.astronautID=missions.missionID 
-             JOIN selections ON selections.selectionID=missions.missionID
-             WHERE missions.missionID = ?;"""
-    result = query_db(sql,(id,),True)
-    return str(result)
+@app.route("/credits")
+def credits():
+    return render_template("Credits.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

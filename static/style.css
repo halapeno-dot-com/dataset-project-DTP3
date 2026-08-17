@@ -4,15 +4,47 @@ body{
     background-color: #f4f4f4;
     font-family: Zen Dots, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+header{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  background-color: pink;
+}
+header ul{
+  list-style-type: none;
+  overflow: hidden;
+  text-align: center;
+}
+header ul li{
+  float: left;
+}
+header ul li a{
+  margin: 30px;
+}
+
+.content-headers{
+  margin-top: 120px;
+  background-color: pink;
+  width: 80%;
+}
+.content-headers h1{
+  text-align: center;
+  font-style: italic;
 }
 
 .main-content{
   width: 80%;
   height: 90vh;
   display: grid;
+  margin-top: 70px;
   gap: 0.5rem;
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 135px 1fr 1fr;
@@ -56,8 +88,8 @@ body{
 
 #image1{
   grid-area: image1;
-  width: 160px;
-  height: 260px;
+  width: 10em;
+  height: 18.25em;
 }
 #image1 img{
   width: 100%;
@@ -67,8 +99,8 @@ body{
 
 #image2{
   grid-area: image2;
-  width: 160px;
-  height: 100px;
+  width: 10em;
+  height: 9.375em;
 }
 #image2 img{
   width: 100%;
@@ -82,11 +114,30 @@ body{
 
 #image3{
   grid-area: image3;
-  width: 160px;
-  height: 100px;
+  width: 10em;
+  height: 9.375em;
 }
 #image3 img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+
+.astronaut-content{
+  margin-top: 50px;
+  width: 80%;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, 336px);
+  grid-template-rows: repeat(2, 100px);
+}
+.astronaut-content div{
+  display: flex;
+  width: 80%;
+  max-width: 79%;
+  min-width: 79%;
+  height: 50px;
+  padding: 20px;
+  background-color: pink;
 }
