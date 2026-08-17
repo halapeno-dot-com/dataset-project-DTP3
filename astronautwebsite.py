@@ -1,3 +1,5 @@
+from unittest import result
+
 from flask import Flask, g, render_template
 import sqlite3
 
@@ -34,6 +36,21 @@ def home():
             JOIN selections ON selections.selectionID=astronauts.astronautID;"""
     results = query_db(sql)
     return render_template("Home.html", astronauts=results)
+
+@app.route('/', methods=['GET'])
+def search():
+    query = request.args.get('q', '')
+    results = []
+
+    if query:
+        conn = get_db_connection()
+        sql_query = "SELECT * FROM astronauts WHERE name LIKE ?"
+        search_term = f'%{query}%'
+
+        results = conn.execute(sql_query, (search_term)).fetchall()
+        conn.close
+
+    return render_template('Home.html', results=results, query=query)
 
 @app.route("/astronauts/<int:id>")
 def astronaut(id):

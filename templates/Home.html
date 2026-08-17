@@ -5,7 +5,10 @@
   <div class="main-content">
       <div id="search">
         <h3>SEARCH</h3>
-        <input type="text" placeholder="Search..">
+          <form action="/search" method="GET"></form>
+            <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
+            <button type="submit">Search</button>
+          </form>
         <ul>
           <li><a href="#astronauts">Astronauts</a></li>
           <li><a href="/credits">Credits</a></li>
