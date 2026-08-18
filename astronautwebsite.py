@@ -1,6 +1,6 @@
 from unittest import result
 
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 import sqlite3
 
 DATABASE = "astronautdatabase.db"
@@ -35,22 +35,19 @@ def home():
             JOIN missions ON missions.missionID=astronauts.astronautID
             JOIN selections ON selections.selectionID=astronauts.astronautID;"""
     results = query_db(sql)
-    return render_template("Home.html", astronauts=results)
-
-@app.route('/', methods=['GET'])
-def search():
     query = request.args.get('q', '')
-    results = []
-
+    search_result = None
     if query:
-        conn = get_db_connection()
-        sql_query = "SELECT * FROM astronauts WHERE name LIKE ?"
-        search_term = f'%{query}%'
+        query = query.lower().strip
+        for astronaut in results:
+            astronaut_name = astronaut[1].lower()
+            if query in astronaut_name:
+                search_result = astronaut
+                break
+    search_sql = "SELECT * FROM astronauts WHERE name LIKE?"
+    search_result = query_db(search_sql, ('%' + query + '%',), one=True)
 
-        results = conn.execute(sql_query, (search_term)).fetchall()
-        conn.close
-
-    return render_template('Home.html', results=results, query=query)
+    return render_template("Home.html", astronauts=results, search_result=search_result, query=query)
 
 @app.route("/astronauts/<int:id>")
 def astronaut(id):

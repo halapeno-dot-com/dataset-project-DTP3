@@ -4,13 +4,8 @@
 
   <div class="main-content">
       <div id="search">
-        <h3>SEARCH</h3>
-          <form action="/search" method="GET"></form>
-            <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
-            <button type="submit">Search</button>
-          </form>
         <ul>
-          <li><a href="#astronauts">Astronauts</a></li>
+          <li><a href="/search">Astronauts</a></li>
           <li><a href="/credits">Credits</a></li>
         </ul>
       </div>
@@ -36,6 +31,23 @@
 
   <div class="content-headers" id="astronauts">
     <h1>ASTRONAUTS</h1>
+  </div>
+  <div class="searchbar">
+    <h3>SEARCH</h3>
+      <form action="/search" method="GET"></form>
+        <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
+        <button type="submit">Search</button>
+      </form>
+      <div id="search-result-card">
+        {% if search_result %}
+            <h3>Astronaut Found</h3>
+            <p><strong>ID:</strong> {{ search_result[0] }}</p>
+            <p><strong>Name:</strong> {{ search_result[1] }}</p>
+            <a href="{{ url_for('astronaut', id=search_result[0]) }}">View Full Profile</a>
+        {% elif query %}
+            <h3>No astronaut found</h3>
+        {% endif %}
+      </div>
   </div>
 
   <div class="astronaut-content">
