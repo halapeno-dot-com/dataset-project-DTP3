@@ -3,29 +3,29 @@
 {% block body %}
 
   <div class="main-content">
-      <div id="search">
-        <ul>
-          <li><a href="/search">Astronauts</a></li>
-          <li><a href="/credits">Credits</a></li>
-        </ul>
+      <div id="image0">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/nasa-hubble-space-telescope-63eIRNS-hHc-unsplash.jpg" alt="satellite">
       </div>
       <div id="header">
         <h1>Project Artemis</h1>
       </div>
       <div id="image1">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-rocket-launch-67643_1920.jpg">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-rocket-launch-67643_1920.jpg" alt="rocket">
       </div>
       <div id="image2">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-satellite-67718_1920.jpg">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-satellite-67718_1920.jpg" alt="satellite 2">
       </div>
       <div id="article">
         <h3>What is Project Artemis?</h3>
-        <p>Project Artemis is an astronaut archive</p>
+        <p>Project Artemis is an astronaut archive designed for students interested in space exploration.</p>
+      </br>
         <h3>How do I use it?</h3>
-        <p>You can search for astronauts in the search bar to your left via name, or ID number.</p>
+        <p>You can search for astronauts in the search bar below via name or ID number.
+          You can also browse through the astronaut gallery right below the search bar.
+        </p>
       </div>
       <div id="image3">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-astronaut-11080_1920.jpg">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-astronaut-11080_1920.jpg" alt="astronaut">
       </div>
   </div>
 
@@ -34,15 +34,15 @@
   </div>
   <div class="searchbar">
     <h3>SEARCH</h3>
-      <form action="/search" method="GET"></form>
+      <form action="/search" method="GET">
         <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
         <button type="submit">Search</button>
       </form>
       <div id="search-result-card">
         {% if search_result %}
             <h3>Astronaut Found</h3>
-            <p><strong>ID:</strong> {{ search_result[0] }}</p>
             <p><strong>Name:</strong> {{ search_result[1] }}</p>
+            <p><strong>ID:</strong> {{ search_result[0] }}</p>
             <a href="{{ url_for('astronaut', id=search_result[0]) }}">View Full Profile</a>
         {% elif query %}
             <h3>No astronaut found</h3>
