@@ -2,9 +2,17 @@
 
 {% block body %}
 
+  <header>
+    <ul>
+      <li><a href="/"><u>H</u>ome</a></li>
+      <li><a href="/credits"><u>C</u>redits</a></li>
+      <li><a href="/#astronauts"><u>A</u>stronauts</a></li>
+    </ul>
+  </header>
+
   <div class="main-content">
       <div id="image0">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/nasa-hubble-space-telescope-63eIRNS-hHc-unsplash.jpg" alt="satellite">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/history-in-hd-e5eDHbmHprg-unsplash.jpg" alt="astronaut">
       </div>
       <div id="header">
         <h1>Project Artemis</h1>
@@ -13,19 +21,19 @@
         <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-rocket-launch-67643_1920.jpg" alt="rocket">
       </div>
       <div id="image2">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-satellite-67718_1920.jpg" alt="satellite 2">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-satellite-67718_1920.jpg" alt="satellite">
       </div>
       <div id="article">
         <h3>What is Project Artemis?</h3>
-        <p>Project Artemis is an astronaut archive designed for students interested in space exploration.</p>
+        <p><strong>Project Artemis</strong> is an astronaut archive designed for students interested in <strong>space exploration</strong>.</p>
       </br>
         <h3>How do I use it?</h3>
-        <p>You can search for astronauts in the search bar below via name or ID number.
-          You can also browse through the astronaut gallery right below the search bar.
+        <p>You can search for <strong>astronauts</strong> in the search bar below via <strong>name</strong> or <strong>ID number</strong>.
+          You can also browse through the <strong>astronaut gallery</strong> right below the search bar.
         </p>
       </div>
       <div id="image3">
-        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-astronaut-11080_1920.jpg" alt="astronaut">
+        <img src="https://file.garden/aga11fjWMlJVLn9Z/DTP/wikiimages-astronaut-11080_1920.jpg" alt="astronaut 2">
       </div>
   </div>
 
@@ -33,21 +41,20 @@
     <h1>ASTRONAUTS</h1>
   </div>
   <div class="searchbar">
-    <h3>SEARCH</h3>
-      <form action="/search" method="GET">
-        <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
-        <button type="submit">Search</button>
-      </form>
-      <div id="search-result-card">
-        {% if search_result %}
-            <h3>Astronaut Found</h3>
-            <p><strong>Name:</strong> {{ search_result[1] }}</p>
-            <p><strong>ID:</strong> {{ search_result[0] }}</p>
-            <a href="{{ url_for('astronaut', id=search_result[0]) }}">View Full Profile</a>
-        {% elif query %}
-            <h3>No astronaut found</h3>
-        {% endif %}
-      </div>
+    <form action="/search" method="GET">
+      <input type="text" name="q" value="{{ query }}" id="searchbar" placeholder="Search..">
+      <button type="submit">Search</button>
+    </form>
+    <div id="search-result-card">
+      {% if search_result %}
+          <h3>Astronaut Found</h3>
+          <p><strong>Name:</strong> {{ search_result[1] }}</p>
+          <p><strong>ID:</strong> {{ search_result[0] }}</p>
+          <a href="{{ url_for('astronaut', id=search_result[0]) }}">View Full Profile</a>
+      {% elif query %}
+          <h3>No astronaut found</h3>
+      {% endif %}
+    </div>
   </div>
 
   <div class="astronaut-content">

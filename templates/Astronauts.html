@@ -2,12 +2,22 @@
 
 {% block body %}
 
-<p><strong>Name:</strong> {{ astronaut[1] }}</p>
-<p><strong>ID:</strong> {{ astronaut[0] }}</p>
-<p><strong>Gender: {{ astronaut[2] }}</strong></p>
-<p><strong>Birth Year: {{ astronaut[3] }}</strong></p>
-<p><strong>Nationality: {{ astronaut[4] }}</strong></p>
-<p><strong>Selection Group(s): {{ astronaut[6] }}</strong></p>
-<p><strong>Mission Count: {{ astronaut[7] }}</strong></p>
+    <header>
+        <ul>
+        <li><a href="/"><u>H</u>ome</a></li>
+        <li><a href="/credits"><u>C</u>redits</a></li>
+        <li><a href="/#astronauts"><u>A</u>stronauts</a></li>
+        </ul>
+    </header>
+
+    <div class="astronaut-profile">
+        <p><strong>Name:</strong> {{ astronaut[1] }}</p>
+        <p><strong>ID:</strong> {{ astronaut[0] }}</p>
+        <p><strong>Gender:</strong> {{ astronaut[2] }}</strong></p>
+        <p><strong>Birth Year:</strong> {{ astronaut[3] }}</strong></p>
+        <p><strong>Nationality:</strong> {{ astronaut[4] }}</strong></p>
+        <p><strong>Selection Group(s):</strong> {{ astronaut[6] }}</strong></p>
+        <p><strong>Mission Count:</strong> {{ astronaut[7] }}</strong></p>
+    </div>
 
 {% endblock %}
