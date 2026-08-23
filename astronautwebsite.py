@@ -59,22 +59,7 @@ def astronaut(id):
              JOIN selections ON selections.selectionID=astronauts.astronautID
              WHERE astronauts.astronautID = ?;"""
     result = query_db(sql,(id,),True)
-    return render_template("Astronauts.html", astronaut=result)
-
-@app.route("/search")
-def search():
-   results = get_astronauts()
-   query = request.args.get('q', '')
-   search_result = None
-   if query:
-        query = query.lower().strip()
-        for astronaut in results:
-            astronaut_name = astronaut[1].lower()
-            if query in astronaut_name:
-                search_result = astronaut
-                break
-            return render_template("Home.html", astronauts=results, search_result=search_result, query=query)        
-
+    return render_template("Astronauts.html", astronaut=result)     
 
 @app.route("/credits")
 def credits():
