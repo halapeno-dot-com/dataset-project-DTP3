@@ -1,14 +1,14 @@
 {
     "builds": [
         {
-            "src": "api/app.py",
+            "src": "api/astronautwebsite.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "(.*)",
-            "dest": "api/app.py"
+            "dest": "api/astronautwebsite.py"
         },
         {
             "src": "api/(.*)",
