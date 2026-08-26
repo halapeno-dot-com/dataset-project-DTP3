@@ -1,5 +1,3 @@
-from unittest import result
-
 from flask import Flask, g, render_template, request
 import sqlite3
 
