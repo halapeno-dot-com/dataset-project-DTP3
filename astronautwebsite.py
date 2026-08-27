@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, g, render_template, request
 import sqlite3
 
 DATABASE = "astronautdatabase.db"
